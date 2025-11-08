@@ -1,0 +1,36 @@
+# Python virtual environments
+venv/
+.venv/
+
+# Byte-compiled Python files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Environment variables / secrets
+.env
+*.secrets.toml
+
+# Sensitive configs (e.g., API keys)
+src/config/settings.py
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
