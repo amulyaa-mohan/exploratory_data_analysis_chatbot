@@ -1,0 +1,29 @@
+# Updated requirements.txt (fixed conflict: downgraded langchain-openai to 0.0.5 for embedchain compatibility)
+streamlit==1.38.0
+langchain==0.1.20
+langchain-community==0.0.38
+langchain-google-genai==1.0.3
+langchain-openai==0.0.5  # Downgraded to match embedchain requirement
+sqlalchemy==2.0.31
+pymysql==1.1.0
+plotly==5.22.0
+pandas==2.2.3
+numpy==1.26.4
+python-dotenv==1.0.1
+chromadb==0.4.24
+embedchain==0.1.98
+instructor==0.5.2
+appdirs==1.4.4
+opentelemetry-api==1.27.0
+opentelemetry-sdk==1.27.0
+opentelemetry-exporter-otlp-proto-http==1.27.0
+regex==2023.12.25
+setuptools
+crewai==0.30.11
+crewai-tools==0.0.6
+pypdf2==3.0.0
+python-docx==1.1.2
+faiss-cpu==1.8.0
+selenium==4.12.0
+beautifulsoup4==4.12.2
+sentence-transformers==2.2.2
