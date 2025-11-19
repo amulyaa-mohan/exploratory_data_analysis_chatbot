@@ -55,7 +55,7 @@ Answer:
 PROMPT = PromptTemplate(template=PROMPT_TPL, input_variables=["context", "question"])
 
 def run():
-    st.title("Document Intelligence Bot")
+    st.title("Document Intelligence Bot 📄")
     st.caption("Ask anything from PDFs — with sources")
 
     debug = st.sidebar.checkbox("Debug Mode")
