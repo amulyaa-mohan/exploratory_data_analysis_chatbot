@@ -101,7 +101,7 @@ def setup_vectordb(websites: List[str]):
             st.warning(f"Failed to process {url}: {e}")
 
     if not docs:
-        return None
+        return None, []
 
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=150)
     chunks = splitter.split_documents(docs)
@@ -111,37 +111,7 @@ def setup_vectordb(websites: List[str]):
     except TypeError:
         vectordb = DocArrayInMemorySearch.from_documents(chunks, embedding=get_embeddings())
 
-    return vectordb
-
-def extract_docs_from_vectordb(vectordb) -> List[Document]:
-    if not vectordb:
-        return []
-
-    options = [
-        "_documents",
-        "docs",
-        "_data",
-        "_docstore",
-    ]
-
-    for attr in options:
-        if hasattr(vectordb, attr):
-            try:
-                val = getattr(vectordb, attr)
-                if isinstance(val, list):
-                    return val
-            except:
-                pass
-
-    try:
-        retr = vectordb.as_retriever()
-        sample = retr.get_relevant_documents("the")
-        if sample:
-            return sample
-    except:
-        pass
-
-    return []
+    return vectordb, chunks
 
 def run():
     st.set_page_config(page_title="Web Intelligence Bot 🌐", layout="wide")
@@ -184,12 +154,11 @@ def run():
         st.info("Add URLs to begin.")
         return
 
-    vectordb = setup_vectordb(urls)
+    vectordb, docs_list = setup_vectordb(urls)
     if not vectordb:
         st.error("Indexing returned no documents.")
         return
 
-    docs_list = extract_docs_from_vectordb(vectordb)
     st.success(f"Indexed {len(docs_list)} document chunks successfully!")
 
     with st.expander("Debug — First chunk"):
@@ -199,7 +168,8 @@ def run():
             st.write("No docs")
 
 
-    retriever = vectordb.as_retriever(search_kwargs={"k": 4})
+    # Long filings split into hundreds of chunks; k=4 routinely missed table rows like revenue.
+    retriever = vectordb.as_retriever(search_kwargs={"k": 12})
     qa = RetrievalQA.from_chain_type(
         llm=get_llm(),
         retriever=retriever,
@@ -211,7 +181,7 @@ def run():
     if st.session_state.chat_history:
         for item in st.session_state.chat_history:
             st.markdown(f"**You:** {item['q']}")
-            st.markdown(f"**Bot:** {item['a']}")
+            st.markdown("**Bot:** " + item["a"].replace("$", r"\$"))
             st.markdown("---")
     else:
         st.caption("No chat yet.")
@@ -245,7 +215,7 @@ def run():
         st.session_state.chat_history.append({"q": query, "a": answer})
 
         st.markdown("### ✅ Answer")
-        st.write(answer)
+        st.markdown(answer.replace("$", r"\$"))  # stop "$x … $y" rendering as LaTeX
 
         if sources:
             with st.expander(f"Sources ({len(sources)})"):

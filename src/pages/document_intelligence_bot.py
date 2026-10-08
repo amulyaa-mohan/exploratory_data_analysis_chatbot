@@ -154,7 +154,7 @@ def run():
 
         for msg in st.session_state.messages:
             with st.chat_message(msg["role"]):
-                st.markdown(msg["content"])
+                st.markdown(msg["content"].replace("$", r"\$"))  # stop "$x … $y" rendering as LaTeX
 
         if prompt := st.chat_input("Ask about the document…"):
             st.session_state.messages.append({"role": "user", "content": prompt})
@@ -166,7 +166,7 @@ def run():
                     try:
                         result = qa.invoke({"query": prompt})
                         reply = result["result"]
-                        st.markdown(reply)
+                        st.markdown(reply.replace("$", r"\$"))
 
                         sources = result.get("source_documents", [])
                         if sources:
