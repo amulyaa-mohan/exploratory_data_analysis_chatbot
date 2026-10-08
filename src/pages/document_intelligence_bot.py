@@ -173,7 +173,7 @@ def run():
                             with st.expander(f"Sources ({len(sources)})"):
                                 for doc in sources[:3]:
                                     page = doc.metadata.get("page", "Summary")
-                                    snippet = doc.page_content.replace("\n", " ")[:200]
+                                    snippet = doc.page_content.replace("\n", " ")[:200].replace("$", r"\$")
                                     st.caption(f"**Page {page}**: {snippet}…")
 
                         if debug:

@@ -42,14 +42,23 @@ This project is an interactive chatbot system for EDA tasks. It includes three s
 *Structured Query Bot with Olist dataset and visualization.*
 
 ![Structured Query Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/structured_query_bot.png)
+![Structured Query Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/Picture6.jpg)
+![Structured Query Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/Picture7.jpg)
+![Structured Query Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/Picture8.jpg)
 
 *Document Intelligence Bot answering from uploaded PDF.*
 
 ![Document Intelligence Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/document_intelligence_bot.png)
+![Document Intelligence Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/Picture4.jpg)
+![Document Intelligence Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/Picture5.jpg)
+
 
 *Web Intelligence Bot querying SEC filing.*
 
 ![Web Intelligence Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/web_intelligence_bot.png)
+![Web Intelligence Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/Picture1.jpg)
+![Web Intelligence Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/Picture2.jpg)
+![Web Intelligence Bot](https://raw.githubusercontent.com/amulyaa-Mohan/exploratory_data_analysis_chatbot/main/Screenshots/Picture3.jpg)
 
 ### Installation
 
